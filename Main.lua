@@ -57,13 +57,13 @@ headerCorner.Parent = headerBar
 -- Header Title
 local title = Instance.new("TextLabel")
 title.Name = "Title"
-title.Size = UDim2.new(0, 200, 0, 70)
+title.Size = UDim2.new(0, 300, 0, 70)
 title.Position = UDim2.new(0, 20, 0, 0)
 title.BackgroundTransparency = 1
-title.Text = "BLOX FRUITS"
+title.Text = "𝐁𝐋𝐎𝐗 𝐅𝐑𝐔𝐈𝐓𝐒"
 title.TextColor3 = Color3.fromRGB(255, 255, 255)
 title.Font = Enum.Font.GothamBold
-title.TextSize = 20
+title.TextSize = 22
 title.TextXAlignment = Enum.TextXAlignment.Left
 title.Parent = headerBar
 
@@ -96,52 +96,32 @@ local tabsLayout = Instance.new("UIListLayout")
 tabsLayout.FillDirection = Enum.FillDirection.Horizontal
 tabsLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left
 tabsLayout.VerticalAlignment = Enum.VerticalAlignment.Center
-tabsLayout.Padding = UDim.new(0, 12)
+tabsLayout.Padding = UDim.new(0, 8)
 tabsLayout.Parent = tabsContainer
 
 -- Current active tab
-local currentTab = "Auto Farm"
+local currentTab = "𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦"
 
 -- Content frames for each tab
 local contentFrames = {}
 
--- Function to create tab button with icon
-local function createTabButton(name, iconId)
+-- Function to create tab button (text only)
+local function createTabButton(name)
     local tabBtn = Instance.new("TextButton")
     tabBtn.Name = name .. "Tab"
-    tabBtn.Size = UDim2.new(0, 120, 0, 45)
+    tabBtn.Size = UDim2.new(0, 115, 0, 45)
     tabBtn.BackgroundColor3 = (name == currentTab) and Color3.fromRGB(147, 112, 219) or Color3.fromRGB(28, 28, 35)
     tabBtn.BorderSizePixel = 0
     tabBtn.AutoButtonColor = false
-    tabBtn.Text = ""
+    tabBtn.Text = name
+    tabBtn.TextColor3 = (name == currentTab) and Color3.fromRGB(255, 255, 255) or Color3.fromRGB(180, 180, 180)
+    tabBtn.Font = Enum.Font.GothamBold
+    tabBtn.TextSize = 13
     tabBtn.Parent = tabsContainer
     
     local tabCorner = Instance.new("UICorner")
     tabCorner.CornerRadius = UDim.new(0, 10)
     tabCorner.Parent = tabBtn
-    
-    -- Icon
-    local icon = Instance.new("ImageLabel")
-    icon.Name = "Icon"
-    icon.Size = UDim2.new(0, 24, 0, 24)
-    icon.Position = UDim2.new(0, 12, 0.5, -12)
-    icon.BackgroundTransparency = 1
-    icon.Image = iconId
-    icon.ImageColor3 = (name == currentTab) and Color3.fromRGB(255, 255, 255) or Color3.fromRGB(180, 180, 180)
-    icon.Parent = tabBtn
-    
-    -- Label
-    local label = Instance.new("TextLabel")
-    label.Name = "Label"
-    label.Size = UDim2.new(1, -45, 1, 0)
-    label.Position = UDim2.new(0, 42, 0, 0)
-    label.BackgroundTransparency = 1
-    label.Text = name:upper()
-    label.TextColor3 = (name == currentTab) and Color3.fromRGB(255, 255, 255) or Color3.fromRGB(180, 180, 180)
-    label.Font = Enum.Font.GothamBold
-    label.TextSize = 12
-    label.TextXAlignment = Enum.TextXAlignment.Left
-    label.Parent = tabBtn
     
     -- Hover effect
     tabBtn.MouseEnter:Connect(function()
@@ -162,18 +142,14 @@ local function createTabButton(name, iconId)
         for _, child in pairs(tabsContainer:GetChildren()) do
             if child:IsA("TextButton") then
                 child.BackgroundColor3 = Color3.fromRGB(28, 28, 35)
-                local childIcon = child:FindFirstChild("Icon")
-                local childLabel = child:FindFirstChild("Label")
-                if childIcon then childIcon.ImageColor3 = Color3.fromRGB(180, 180, 180) end
-                if childLabel then childLabel.TextColor3 = Color3.fromRGB(180, 180, 180) end
+                child.TextColor3 = Color3.fromRGB(180, 180, 180)
             end
         end
         
         -- Update current tab
         currentTab = name
         tabBtn.BackgroundColor3 = Color3.fromRGB(147, 112, 219)
-        icon.ImageColor3 = Color3.fromRGB(255, 255, 255)
-        label.TextColor3 = Color3.fromRGB(255, 255, 255)
+        tabBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
         
         -- Show/hide content frames
         for tabName, frame in pairs(contentFrames) do
@@ -186,12 +162,12 @@ local function createTabButton(name, iconId)
     return tabBtn
 end
 
--- Create tabs
-createTabButton("Auto Farm", "rbxassetid://7743866903")
-createTabButton("Combat", "rbxassetid://7743868000")
-createTabButton("Misc", "rbxassetid://7743869154")
-createTabButton("Stats", "rbxassetid://7743871002")
-createTabButton("Teleport", "rbxassetid://7743872365")
+-- Create tabs with Megapixel style text
+createTabButton("𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦")
+createTabButton("𝐂𝐨𝐦𝐛𝐚𝐭")
+createTabButton("𝐌𝐢𝐬𝐜")
+createTabButton("𝐒𝐭𝐚𝐭𝐬")
+createTabButton("𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭")
 
 -- Function to create content frame for each tab
 local function createContentFrame(tabName)
@@ -229,14 +205,14 @@ local function createContentFrame(tabName)
 end
 
 -- Create content frames for all tabs
-contentFrames["Auto Farm"] = createContentFrame("Auto Farm")
-contentFrames["Combat"] = createContentFrame("Combat")
-contentFrames["Misc"] = createContentFrame("Misc")
-contentFrames["Stats"] = createContentFrame("Stats")
-contentFrames["Teleport"] = createContentFrame("Teleport")
+contentFrames["𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦"] = createContentFrame("𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦")
+contentFrames["𝐂𝐨𝐦𝐛𝐚𝐭"] = createContentFrame("𝐂𝐨𝐦𝐛𝐚𝐭")
+contentFrames["𝐌𝐢𝐬𝐜"] = createContentFrame("𝐌𝐢𝐬𝐜")
+contentFrames["𝐒𝐭𝐚𝐭𝐬"] = createContentFrame("𝐒𝐭𝐚𝐭𝐬")
+contentFrames["𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭"] = createContentFrame("𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭")
 
--- Function to create feature button
-local function createFeatureButton(tabName, name, iconId, description)
+-- Function to create feature button (no icon)
+local function createFeatureButton(tabName, name, description)
     local contentFrame = contentFrames[tabName]
     if not contentFrame then return end
     
@@ -251,21 +227,11 @@ local function createFeatureButton(tabName, name, iconId, description)
     featureCorner.CornerRadius = UDim.new(0, 10)
     featureCorner.Parent = featureFrame
     
-    -- Icon
-    local featureIcon = Instance.new("ImageLabel")
-    featureIcon.Name = "Icon"
-    featureIcon.Size = UDim2.new(0, 40, 0, 40)
-    featureIcon.Position = UDim2.new(0, 15, 0.5, -20)
-    featureIcon.BackgroundTransparency = 1
-    featureIcon.Image = iconId
-    featureIcon.ImageColor3 = Color3.fromRGB(147, 112, 219)
-    featureIcon.Parent = featureFrame
-    
     -- Title
     local featureTitle = Instance.new("TextLabel")
     featureTitle.Name = "Title"
-    featureTitle.Size = UDim2.new(1, -180, 0, 25)
-    featureTitle.Position = UDim2.new(0, 65, 0, 10)
+    featureTitle.Size = UDim2.new(1, -130, 0, 25)
+    featureTitle.Position = UDim2.new(0, 20, 0, 10)
     featureTitle.BackgroundTransparency = 1
     featureTitle.Text = name
     featureTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -277,8 +243,8 @@ local function createFeatureButton(tabName, name, iconId, description)
     -- Description
     local featureDesc = Instance.new("TextLabel")
     featureDesc.Name = "Description"
-    featureDesc.Size = UDim2.new(1, -180, 0, 20)
-    featureDesc.Position = UDim2.new(0, 65, 0, 35)
+    featureDesc.Size = UDim2.new(1, -130, 0, 20)
+    featureDesc.Position = UDim2.new(0, 20, 0, 35)
     featureDesc.BackgroundTransparency = 1
     featureDesc.Text = description
     featureDesc.TextColor3 = Color3.fromRGB(150, 150, 150)
@@ -293,7 +259,7 @@ local function createFeatureButton(tabName, name, iconId, description)
     toggleBtn.Size = UDim2.new(0, 90, 0, 35)
     toggleBtn.Position = UDim2.new(1, -105, 0.5, -17.5)
     toggleBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 50)
-    toggleBtn.Text = "OFF"
+    toggleBtn.Text = "𝐎𝐅𝐅"
     toggleBtn.TextColor3 = Color3.fromRGB(200, 200, 200)
     toggleBtn.Font = Enum.Font.GothamBold
     toggleBtn.TextSize = 12
@@ -309,12 +275,12 @@ local function createFeatureButton(tabName, name, iconId, description)
         isToggled = not isToggled
         if isToggled then
             toggleBtn.BackgroundColor3 = Color3.fromRGB(147, 112, 219)
-            toggleBtn.Text = "ON"
+            toggleBtn.Text = "𝐎𝐍"
             toggleBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
             print(name .. " enabled!")
         else
             toggleBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 50)
-            toggleBtn.Text = "OFF"
+            toggleBtn.Text = "𝐎𝐅𝐅"
             toggleBtn.TextColor3 = Color3.fromRGB(200, 200, 200)
             print(name .. " disabled!")
         end
@@ -324,32 +290,36 @@ local function createFeatureButton(tabName, name, iconId, description)
 end
 
 -- Create features for Auto Farm tab
-createFeatureButton("Auto Farm", "Auto Farm Level", "rbxassetid://7743866903", "Automatically farm enemies for levels")
-createFeatureButton("Auto Farm", "Auto Farm Mastery", "rbxassetid://7743866903", "Farm weapon and fruit mastery")
-createFeatureButton("Auto Farm", "Auto Farm Boss", "rbxassetid://7743868000", "Automatically defeat bosses")
-createFeatureButton("Auto Farm", "Auto Farm Fruit", "rbxassetid://7743869154", "Hunt for devil fruits")
-createFeatureButton("Auto Farm", "Auto Quest", "rbxassetid://7743871002", "Complete quests automatically")
-createFeatureButton("Auto Farm", "Auto Observation Haki", "rbxassetid://7743872365", "Train Observation Haki")
+createFeatureButton("𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦", "𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦 𝐋𝐞𝐯𝐞𝐥", "Automatically farm enemies for levels")
+createFeatureButton("𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦", "𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦 𝐌𝐚𝐬𝐭𝐞𝐫𝐲", "Farm weapon and fruit mastery")
+createFeatureButton("𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦", "𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦 𝐁𝐨𝐬𝐬", "Automatically defeat bosses")
+createFeatureButton("𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦", "𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦 𝐅𝐫𝐮𝐢𝐭", "Hunt for devil fruits")
+createFeatureButton("𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦", "𝐀𝐮𝐭𝐨 𝐐𝐮𝐞𝐬𝐭", "Complete quests automatically")
+createFeatureButton("𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦", "𝐀𝐮𝐭𝐨 𝐎𝐛𝐬𝐞𝐫𝐯𝐚𝐭𝐢𝐨𝐧 𝐇𝐚𝐤𝐢", "Train Observation Haki")
 
 -- Create features for Combat tab
-createFeatureButton("Combat", "Auto Combat", "rbxassetid://7743868000", "Automatically attack enemies")
-createFeatureButton("Combat", "Aimbot", "rbxassetid://7743868000", "Auto aim at targets")
-createFeatureButton("Combat", "Kill Aura", "rbxassetid://7743868000", "Attack nearby enemies")
+createFeatureButton("𝐂𝐨𝐦𝐛𝐚𝐭", "𝐀𝐮𝐭𝐨 𝐂𝐨𝐦𝐛𝐚𝐭", "Automatically attack enemies")
+createFeatureButton("𝐂𝐨𝐦𝐛𝐚𝐭", "𝐀𝐢𝐦𝐛𝐨𝐭", "Auto aim at targets")
+createFeatureButton("𝐂𝐨𝐦𝐛𝐚𝐭", "𝐊𝐢𝐥𝐥 𝐀𝐮𝐫𝐚", "Attack nearby enemies")
+createFeatureButton("𝐂𝐨𝐦𝐛𝐚𝐭", "𝐀𝐮𝐭𝐨 𝐒𝐤𝐢𝐥𝐥", "Automatically use skills")
 
 -- Create features for Misc tab
-createFeatureButton("Misc", "Auto Collect Chests", "rbxassetid://7743869154", "Collect all chests automatically")
-createFeatureButton("Misc", "No Clip", "rbxassetid://7743869154", "Walk through walls")
-createFeatureButton("Misc", "Fly", "rbxassetid://7743869154", "Enable fly mode")
+createFeatureButton("𝐌𝐢𝐬𝐜", "𝐀𝐮𝐭𝐨 𝐂𝐨𝐥𝐥𝐞𝐜𝐭 𝐂𝐡𝐞𝐬𝐭𝐬", "Collect all chests automatically")
+createFeatureButton("𝐌𝐢𝐬𝐜", "𝐍𝐨 𝐂𝐥𝐢𝐩", "Walk through walls")
+createFeatureButton("𝐌𝐢𝐬𝐜", "𝐅𝐥𝐲", "Enable fly mode")
+createFeatureButton("𝐌𝐢𝐬𝐜", "𝐒𝐩𝐞𝐞𝐝 𝐇𝐚𝐜𝐤", "Increase movement speed")
 
 -- Create features for Stats tab
-createFeatureButton("Stats", "Auto Melee", "rbxassetid://7743871002", "Auto upgrade melee stats")
-createFeatureButton("Stats", "Auto Defense", "rbxassetid://7743871002", "Auto upgrade defense stats")
-createFeatureButton("Stats", "Auto Sword", "rbxassetid://7743871002", "Auto upgrade sword stats")
+createFeatureButton("𝐒𝐭𝐚𝐭𝐬", "𝐀𝐮𝐭𝐨 𝐌𝐞𝐥𝐞𝐞", "Auto upgrade melee stats")
+createFeatureButton("𝐒𝐭𝐚𝐭𝐬", "𝐀𝐮𝐭𝐨 𝐃𝐞𝐟𝐞𝐧𝐬𝐞", "Auto upgrade defense stats")
+createFeatureButton("𝐒𝐭𝐚𝐭𝐬", "𝐀𝐮𝐭𝐨 𝐒𝐰𝐨𝐫𝐝", "Auto upgrade sword stats")
+createFeatureButton("𝐒𝐭𝐚𝐭𝐬", "𝐀𝐮𝐭𝐨 𝐆𝐮𝐧", "Auto upgrade gun stats")
 
 -- Create features for Teleport tab
-createFeatureButton("Teleport", "Teleport to Sea 1", "rbxassetid://7743872365", "Teleport to first sea")
-createFeatureButton("Teleport", "Teleport to Sea 2", "rbxassetid://7743872365", "Teleport to second sea")
-createFeatureButton("Teleport", "Teleport to Sea 3", "rbxassetid://7743872365", "Teleport to third sea")
+createFeatureButton("𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭", "𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭 𝐭𝐨 𝐒𝐞𝐚 𝟏", "Teleport to first sea")
+createFeatureButton("𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭", "𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭 𝐭𝐨 𝐒𝐞𝐚 𝟐", "Teleport to second sea")
+createFeatureButton("𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭", "𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭 𝐭𝐨 𝐒𝐞𝐚 𝟑", "Teleport to third sea")
+createFeatureButton("𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭", "𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭 𝐭𝐨 𝐒𝐡𝐨𝐩", "Teleport to shop")
 
 -- Toggle button functionality
 toggleButton.MouseButton1Click:Connect(function()
