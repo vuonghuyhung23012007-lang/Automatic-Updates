@@ -1102,7 +1102,25 @@ end)
 
 -- ==================== INITIALIZATION ====================
 
-print("Blox Fruits Menu UI loaded successfully!")
-print("Auto Farm System: Ready")
-print("Fast Attack System: Ready")
-print("Settings System: Ready")
+-- Khởi động sau khi mọi thứ load xong
+task.spawn(function()
+    wait(2) -- Chờ game load
+    LoadSettings()
+    
+    -- Áp dụng settings
+    FastAttack = _G.Settings.Configs["Fast Attack"]
+    _G.AutoFarmLevelReal = _G.Settings.Main["Auto Farm Level"]
+    
+    -- Hiển thị toggle button
+    if toggleButton then
+        toggleButton.Visible = true
+    end
+    
+    warn("=== BLOX FRUITS MENU LOADED ===")
+    warn("Press the purple button to open menu")
+end)
+
+-- Chống filter
+if game:GetService("RunService"):IsClient() then
+    screenGui.Enabled = true
+end
