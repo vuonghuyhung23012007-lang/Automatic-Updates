@@ -1,6 +1,4 @@
-Dưới đây là code đầy đủ với TẤT CẢ functions từ file gốc và UI hoàn chỉnh:
 
-```lua
 local LoadingTime = tick()
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/vuonghuyhung23012007-lang/Automatic-Updates/refs/heads/main/Src"))()
 local Window = Library:CreateWindow({Credit = "pindummy"})
