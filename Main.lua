@@ -60,10 +60,10 @@ title.Name = "Title"
 title.Size = UDim2.new(0, 300, 0, 70)
 title.Position = UDim2.new(0, 20, 0, 0)
 title.BackgroundTransparency = 1
-title.Text = "𝐁𝐋𝐎𝐗 𝐅𝐑𝐔𝐈𝐓𝐒"
+title.Text = "BLOX FRUITS"
 title.TextColor3 = Color3.fromRGB(255, 255, 255)
 title.Font = Enum.Font.GothamBold
-title.TextSize = 22
+title.TextSize = 20
 title.TextXAlignment = Enum.TextXAlignment.Left
 title.Parent = headerBar
 
@@ -100,7 +100,7 @@ tabsLayout.Padding = UDim.new(0, 8)
 tabsLayout.Parent = tabsContainer
 
 -- Current active tab
-local currentTab = "𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦"
+local currentTab = "AUTO FARM"
 
 -- Content frames for each tab
 local contentFrames = {}
@@ -116,7 +116,7 @@ local function createTabButton(name)
     tabBtn.Text = name
     tabBtn.TextColor3 = (name == currentTab) and Color3.fromRGB(255, 255, 255) or Color3.fromRGB(180, 180, 180)
     tabBtn.Font = Enum.Font.GothamBold
-    tabBtn.TextSize = 13
+    tabBtn.TextSize = 12
     tabBtn.Parent = tabsContainer
     
     local tabCorner = Instance.new("UICorner")
@@ -162,12 +162,12 @@ local function createTabButton(name)
     return tabBtn
 end
 
--- Create tabs with Megapixel style text
-createTabButton("𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦")
-createTabButton("𝐂𝐨𝐦𝐛𝐚𝐭")
-createTabButton("𝐌𝐢𝐬𝐜")
-createTabButton("𝐒𝐭𝐚𝐭𝐬")
-createTabButton("𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭")
+-- Create tabs
+createTabButton("AUTO FARM")
+createTabButton("COMBAT")
+createTabButton("MISC")
+createTabButton("STATS")
+createTabButton("TELEPORT")
 
 -- Function to create content frame for each tab
 local function createContentFrame(tabName)
@@ -205,11 +205,11 @@ local function createContentFrame(tabName)
 end
 
 -- Create content frames for all tabs
-contentFrames["𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦"] = createContentFrame("𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦")
-contentFrames["𝐂𝐨𝐦𝐛𝐚𝐭"] = createContentFrame("𝐂𝐨𝐦𝐛𝐚𝐭")
-contentFrames["𝐌𝐢𝐬𝐜"] = createContentFrame("𝐌𝐢𝐬𝐜")
-contentFrames["𝐒𝐭𝐚𝐭𝐬"] = createContentFrame("𝐒𝐭𝐚𝐭𝐬")
-contentFrames["𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭"] = createContentFrame("𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭")
+contentFrames["AUTO FARM"] = createContentFrame("AUTO FARM")
+contentFrames["COMBAT"] = createContentFrame("COMBAT")
+contentFrames["MISC"] = createContentFrame("MISC")
+contentFrames["STATS"] = createContentFrame("STATS")
+contentFrames["TELEPORT"] = createContentFrame("TELEPORT")
 
 -- Function to create feature button (no icon)
 local function createFeatureButton(tabName, name, description)
@@ -259,7 +259,7 @@ local function createFeatureButton(tabName, name, description)
     toggleBtn.Size = UDim2.new(0, 90, 0, 35)
     toggleBtn.Position = UDim2.new(1, -105, 0.5, -17.5)
     toggleBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 50)
-    toggleBtn.Text = "𝐎𝐅𝐅"
+    toggleBtn.Text = "OFF"
     toggleBtn.TextColor3 = Color3.fromRGB(200, 200, 200)
     toggleBtn.Font = Enum.Font.GothamBold
     toggleBtn.TextSize = 12
@@ -275,12 +275,12 @@ local function createFeatureButton(tabName, name, description)
         isToggled = not isToggled
         if isToggled then
             toggleBtn.BackgroundColor3 = Color3.fromRGB(147, 112, 219)
-            toggleBtn.Text = "𝐎𝐍"
+            toggleBtn.Text = "ON"
             toggleBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
             print(name .. " enabled!")
         else
             toggleBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 50)
-            toggleBtn.Text = "𝐎𝐅𝐅"
+            toggleBtn.Text = "OFF"
             toggleBtn.TextColor3 = Color3.fromRGB(200, 200, 200)
             print(name .. " disabled!")
         end
@@ -290,36 +290,36 @@ local function createFeatureButton(tabName, name, description)
 end
 
 -- Create features for Auto Farm tab
-createFeatureButton("𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦", "𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦 𝐋𝐞𝐯𝐞𝐥", "Automatically farm enemies for levels")
-createFeatureButton("𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦", "𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦 𝐌𝐚𝐬𝐭𝐞𝐫𝐲", "Farm weapon and fruit mastery")
-createFeatureButton("𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦", "𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦 𝐁𝐨𝐬𝐬", "Automatically defeat bosses")
-createFeatureButton("𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦", "𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦 𝐅𝐫𝐮𝐢𝐭", "Hunt for devil fruits")
-createFeatureButton("𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦", "𝐀𝐮𝐭𝐨 𝐐𝐮𝐞𝐬𝐭", "Complete quests automatically")
-createFeatureButton("𝐀𝐮𝐭𝐨 𝐅𝐚𝐫𝐦", "𝐀𝐮𝐭𝐨 𝐎𝐛𝐬𝐞𝐫𝐯𝐚𝐭𝐢𝐨𝐧 𝐇𝐚𝐤𝐢", "Train Observation Haki")
+createFeatureButton("AUTO FARM", "Auto Farm Level", "Automatically farm enemies for levels")
+createFeatureButton("AUTO FARM", "Auto Farm Mastery", "Farm weapon and fruit mastery")
+createFeatureButton("AUTO FARM", "Auto Farm Boss", "Automatically defeat bosses")
+createFeatureButton("AUTO FARM", "Auto Farm Fruit", "Hunt for devil fruits")
+createFeatureButton("AUTO FARM", "Auto Quest", "Complete quests automatically")
+createFeatureButton("AUTO FARM", "Auto Observation Haki", "Train Observation Haki")
 
 -- Create features for Combat tab
-createFeatureButton("𝐂𝐨𝐦𝐛𝐚𝐭", "𝐀𝐮𝐭𝐨 𝐂𝐨𝐦𝐛𝐚𝐭", "Automatically attack enemies")
-createFeatureButton("𝐂𝐨𝐦𝐛𝐚𝐭", "𝐀𝐢𝐦𝐛𝐨𝐭", "Auto aim at targets")
-createFeatureButton("𝐂𝐨𝐦𝐛𝐚𝐭", "𝐊𝐢𝐥𝐥 𝐀𝐮𝐫𝐚", "Attack nearby enemies")
-createFeatureButton("𝐂𝐨𝐦𝐛𝐚𝐭", "𝐀𝐮𝐭𝐨 𝐒𝐤𝐢𝐥𝐥", "Automatically use skills")
+createFeatureButton("COMBAT", "Auto Combat", "Automatically attack enemies")
+createFeatureButton("COMBAT", "Aimbot", "Auto aim at targets")
+createFeatureButton("COMBAT", "Kill Aura", "Attack nearby enemies")
+createFeatureButton("COMBAT", "Auto Skill", "Automatically use skills")
 
 -- Create features for Misc tab
-createFeatureButton("𝐌𝐢𝐬𝐜", "𝐀𝐮𝐭𝐨 𝐂𝐨𝐥𝐥𝐞𝐜𝐭 𝐂𝐡𝐞𝐬𝐭𝐬", "Collect all chests automatically")
-createFeatureButton("𝐌𝐢𝐬𝐜", "𝐍𝐨 𝐂𝐥𝐢𝐩", "Walk through walls")
-createFeatureButton("𝐌𝐢𝐬𝐜", "𝐅𝐥𝐲", "Enable fly mode")
-createFeatureButton("𝐌𝐢𝐬𝐜", "𝐒𝐩𝐞𝐞𝐝 𝐇𝐚𝐜𝐤", "Increase movement speed")
+createFeatureButton("MISC", "Auto Collect Chests", "Collect all chests automatically")
+createFeatureButton("MISC", "No Clip", "Walk through walls")
+createFeatureButton("MISC", "Fly", "Enable fly mode")
+createFeatureButton("MISC", "Speed Hack", "Increase movement speed")
 
 -- Create features for Stats tab
-createFeatureButton("𝐒𝐭𝐚𝐭𝐬", "𝐀𝐮𝐭𝐨 𝐌𝐞𝐥𝐞𝐞", "Auto upgrade melee stats")
-createFeatureButton("𝐒𝐭𝐚𝐭𝐬", "𝐀𝐮𝐭𝐨 𝐃𝐞𝐟𝐞𝐧𝐬𝐞", "Auto upgrade defense stats")
-createFeatureButton("𝐒𝐭𝐚𝐭𝐬", "𝐀𝐮𝐭𝐨 𝐒𝐰𝐨𝐫𝐝", "Auto upgrade sword stats")
-createFeatureButton("𝐒𝐭𝐚𝐭𝐬", "𝐀𝐮𝐭𝐨 𝐆𝐮𝐧", "Auto upgrade gun stats")
+createFeatureButton("STATS", "Auto Melee", "Auto upgrade melee stats")
+createFeatureButton("STATS", "Auto Defense", "Auto upgrade defense stats")
+createFeatureButton("STATS", "Auto Sword", "Auto upgrade sword stats")
+createFeatureButton("STATS", "Auto Gun", "Auto upgrade gun stats")
 
 -- Create features for Teleport tab
-createFeatureButton("𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭", "𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭 𝐭𝐨 𝐒𝐞𝐚 𝟏", "Teleport to first sea")
-createFeatureButton("𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭", "𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭 𝐭𝐨 𝐒𝐞𝐚 𝟐", "Teleport to second sea")
-createFeatureButton("𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭", "𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭 𝐭𝐨 𝐒𝐞𝐚 𝟑", "Teleport to third sea")
-createFeatureButton("𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭", "𝐓𝐞𝐥𝐞𝐩𝐨𝐫𝐭 𝐭𝐨 𝐒𝐡𝐨𝐩", "Teleport to shop")
+createFeatureButton("TELEPORT", "Teleport to Sea 1", "Teleport to first sea")
+createFeatureButton("TELEPORT", "Teleport to Sea 2", "Teleport to second sea")
+createFeatureButton("TELEPORT", "Teleport to Sea 3", "Teleport to third sea")
+createFeatureButton("TELEPORT", "Teleport to Shop", "Teleport to shop")
 
 -- Toggle button functionality
 toggleButton.MouseButton1Click:Connect(function()
