@@ -65,6 +65,7 @@ title.TextColor3 = Color3.fromRGB(255, 255, 255)
 title.Font = Enum.Font.GothamBold
 title.TextSize = 20
 title.TextXAlignment = Enum.TextXAlignment.Left
+title.RichText = false
 title.Parent = headerBar
 
 -- Close Button
@@ -117,6 +118,7 @@ local function createTabButton(name)
     tabBtn.TextColor3 = (name == currentTab) and Color3.fromRGB(255, 255, 255) or Color3.fromRGB(180, 180, 180)
     tabBtn.Font = Enum.Font.GothamBold
     tabBtn.TextSize = 12
+    tabBtn.RichText = false
     tabBtn.Parent = tabsContainer
     
     local tabCorner = Instance.new("UICorner")
@@ -238,6 +240,7 @@ local function createFeatureButton(tabName, name, description)
     featureTitle.Font = Enum.Font.GothamBold
     featureTitle.TextSize = 14
     featureTitle.TextXAlignment = Enum.TextXAlignment.Left
+    featureTitle.RichText = false
     featureTitle.Parent = featureFrame
     
     -- Description
@@ -251,6 +254,7 @@ local function createFeatureButton(tabName, name, description)
     featureDesc.Font = Enum.Font.Gotham
     featureDesc.TextSize = 11
     featureDesc.TextXAlignment = Enum.TextXAlignment.Left
+    featureDesc.RichText = false
     featureDesc.Parent = featureFrame
     
     -- Toggle Button
