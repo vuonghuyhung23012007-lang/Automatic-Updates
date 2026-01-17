@@ -1,0 +1,98 @@
+repeat task.wait() until game:IsLoaded()
+_G.Execute = false
+_G.Team = "pirates"
+_G.Studio = {
+    ["Bounty Hunter"] = {
+        ["Player Setting"] = {
+            ["Reset Bypass Tp"] = true,
+            ["Spam Dash"] = true,
+            ["Fps Lock"] = { true, "60" },
+            ["Health Setting"] = { 40, 50 },
+            ["Custom Pos Y"] = {
+                ["Enabled"] = true,
+                ["Pos Y"] = 5000
+            },
+            ["Camera Lock"] = true,
+            ["Aim"] = true
+        },
+        ["Target Setting"] = {
+            ["Use All Skill If Race V4"] = {
+                ["Enabled"] = true,
+                ["Weapons"] = { "Melee", "Gun", "Sword", "Blox Fruit" }
+            },
+            ["Hunter Method"] = {
+                ["Use Move Predict"] = true,
+                ["Dogde Skill Target"] = true
+            },
+            ["Skip Target"] = {
+                ["Fruit"] = {
+                    ["Enabled"] = true,
+                    ["Ignore Devil Fruit"] = { "Portal-Portal" }
+                },
+                ["Target Race"] = { "Fishman" },
+                ["Race V4"] = true
+            }
+        },
+        ["Setting Skill"] = {
+            ["Use"] = { "Melee", "Sword", "Blox Fruit", "Gun" },
+            ["Melee"] = {
+                ["Enable"] = true,
+                ["Delay"] = 0,
+                ["Skills"] = {
+                    ["Z"] = { ["Enable"] = true, ["HoldTime"] = 0 },
+                    ["X"] = { ["Enable"] = true, ["HoldTime"] = 0 },
+                    ["C"] = { ["Enable"] = true, ["HoldTime"] = 0 }
+                }
+            },
+            ["Blox Fruit"] = {
+                ["Enable"] = false,
+                ["Delay"] = 0.3,
+                ["Skills"] = {
+                    ["Z"] = { ["Enable"] = false, ["HoldTime"] = 0.3 },
+                    ["X"] = { ["Enable"] = false, ["HoldTime"] = 0.3 },
+                    ["C"] = { ["Enable"] = false, ["HoldTime"] = 0.3 },
+                    ["V"] = { ["Enable"] = false, ["HoldTime"] = 0.3 },
+                    ["F"] = { ["Enable"] = false, ["HoldTime"] = 0.3 }
+                }
+            },
+            ["Sword"] = {
+                ["Enable"] = true,
+                ["Delay"] = 0,
+                ["Load"] = "Cursed Dual Katana",
+                ["Skills"] = {
+                    ["Z"] = { ["Enable"] = true, ["HoldTime"] = 0 },
+                    ["X"] = { ["Enable"] = true, ["HoldTime"] = 0 }
+                }
+            },
+            ["Gun"] = {
+                ["Enable"] = true,
+                ["Delay"] = 0.1,
+                ["Load"] = "Skull Guitar",
+                ["Skills"] = {
+                    ["Z"] = { ["Enable"] = true, ["HoldTime"] = 0.5 },
+                    ["X"] = { ["Enable"] = true, ["HoldTime"] = 0.5 }
+                }
+            }
+        }
+    }
+}
+_G.Misc = {
+    ["Quest"] = {
+        ["Hunter"] = false
+    },
+    ["Chat"] = {
+        ["Enabled"] = true,
+        ["Message"] = { "[Gay] Auto Bounty On Top" }
+    },
+    ["Random"] = {
+        ["Fruit & Store"] = true,
+        ["Bone"] = true
+    }
+}
+_G.HunterGui = {
+    ["Hide_Gui"] = false,
+    ["Setting"] = {
+        ["Gui"] = {}
+    }
+}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/BF-HunterBounty.lua"))()
